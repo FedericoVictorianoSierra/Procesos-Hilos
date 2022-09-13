@@ -51,6 +51,7 @@ namespace Procesos_Hilos
             // 
             // procesoImg
             // 
+            this.procesoImg.BackColor = System.Drawing.Color.Transparent;
             this.procesoImg.Image = global::Procesos_Hilos.Properties.Resources.proceso;
             this.procesoImg.Location = new System.Drawing.Point(109, 143);
             this.procesoImg.Name = "procesoImg";
@@ -61,6 +62,7 @@ namespace Procesos_Hilos
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::Procesos_Hilos.Properties.Resources.procesador;
             this.pictureBox1.Location = new System.Drawing.Point(480, 121);
             this.pictureBox1.Name = "pictureBox1";
