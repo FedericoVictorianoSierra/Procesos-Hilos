@@ -24,19 +24,19 @@ namespace Procesos_Hilos
             miHilo.Enqueue(new Thread(simulacionHilo));//add
             try
             {
-                miHilo.Peek().Start();
+                miHilo.Peek().Start();//tomar el primero de la cola
             } catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
             {
 
             }
-            //Console.WriteLine(miHilo.Count + " procesos en espera");
+            Console.WriteLine(miHilo.Count + " procesos en espera");
         }
 
         void simulacionHilo()
         {
+            procesoImg.Location = new Point(109, 121);
             try
             {
-                procesoImg.Location = new Point(109, 121);
                 while (true)
                 {
                     procesoImg.Location = new Point(procesoImg.Location.X + 1, procesoImg.Location.Y);
@@ -50,6 +50,14 @@ namespace Procesos_Hilos
             catch (ThreadAbortException abortException)
             {
                 Console.WriteLine((string)abortException.ExceptionState);
+            }
+            finally
+            {
+                if (miHilo.Count > 0)
+                {
+                    miHilo.Peek().Start();
+                    Console.WriteLine(miHilo.Count + " procesos en espera");
+                }
             }
         }
 
