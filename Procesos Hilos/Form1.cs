@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Collections;
+using System.Collections.Concurrent;
 
 namespace Procesos_Hilos
 {
@@ -20,34 +22,42 @@ namespace Procesos_Hilos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Hilo();
+            NuevoHilo();
         }
-        Thread miHilo;
-        void Hilo()
+        private Queue<Thread> miHilo = new Queue<Thread>();
+        void NuevoHilo()
         {
-            Thread miHilo = new Thread(simulacionHilo);
-            miHilo.Start();
-            Thread.Sleep(1000);
-            // Abort newThread.
-            /*Console.WriteLine("Main aborting new thread.");
-            miHilo.Abort();
-           
-            // Wait for the thread to terminate.
-            miHilo.Join();
-            Console.WriteLine("New thread terminated - Main exiting.");*/
-            /*new Thread(
-                () =>
+            miHilo.Enqueue(new Thread(simulacionHilo));//add
+
+            
+            //Thread miHilo = new Thread(simulacionHilo);
+            foreach (var hilo in miHilo)
+            {
+
+
+                if (!hilo.IsBackground)
                 {
-                    while (true)
+                    try
                     {
-                        
-                        procesoImg.Location = new Point(procesoImg.Location.X + 1, procesoImg.Location.Y);
-                        //Thread.Sleep();
-                        Console.WriteLine("EWjecutandose Hilo");
+                        procesoImg.Location = new Point(109, 143);
+                        hilo.Start();
+                    }
+                    catch (System.Threading.ThreadStateException ex)
+                    {
+
                     }
                 }
-                )
-            { IsBackground = true }.Start();*/
+
+                /*Thread.Sleep(10000);
+                Console.WriteLine("Ejecutando...");
+                hilo.Abort();
+                hilo.Join();*/
+            }
+
+            
+
+            //Console.WriteLine("Ejecutando...");
+            Console.WriteLine(miHilo.Count);
         }
 
         void simulacionHilo()
@@ -57,7 +67,7 @@ namespace Procesos_Hilos
                 while (true)
                 {
                     procesoImg.Location = new Point(procesoImg.Location.X + 1, procesoImg.Location.Y);
-                    Console.WriteLine("Ejecutandose Hilo");
+                    //Console.WriteLine("Ejecutandose Hilo");
                     Thread.Sleep(1);
                 }
             }
@@ -70,6 +80,12 @@ namespace Procesos_Hilos
         private void Form1_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
+            new Point(procesoImg.Location.X + 1, procesoImg.Location.Y);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

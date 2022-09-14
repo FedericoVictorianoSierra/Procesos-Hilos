@@ -83,6 +83,7 @@ namespace Procesos_Hilos
             this.Name = "Form1";
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
