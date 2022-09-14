@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-using System.Collections;
-using System.Collections.Concurrent;
 
 namespace Procesos_Hilos
 {
@@ -24,51 +17,35 @@ namespace Procesos_Hilos
         {
             NuevoHilo();
         }
+
         private Queue<Thread> miHilo = new Queue<Thread>();
         void NuevoHilo()
         {
             miHilo.Enqueue(new Thread(simulacionHilo));//add
-
-            
-            //Thread miHilo = new Thread(simulacionHilo);
-            foreach (var hilo in miHilo)
+            try
+            {
+                miHilo.Peek().Start();
+            } catch (System.Threading.ThreadStateException ex)
             {
 
-
-                if (!hilo.IsBackground)
-                {
-                    try
-                    {
-                        procesoImg.Location = new Point(109, 143);
-                        hilo.Start();
-                    }
-                    catch (System.Threading.ThreadStateException ex)
-                    {
-
-                    }
-                }
-
-                /*Thread.Sleep(10000);
-                Console.WriteLine("Ejecutando...");
-                hilo.Abort();
-                hilo.Join();*/
             }
-
-            
-
-            //Console.WriteLine("Ejecutando...");
-            Console.WriteLine(miHilo.Count);
+            Console.WriteLine(miHilo.Count + " procesos");
         }
 
         void simulacionHilo()
         {
             try
             {
+                procesoImg.Location = new Point(109, 121);
                 while (true)
                 {
                     procesoImg.Location = new Point(procesoImg.Location.X + 1, procesoImg.Location.Y);
-                    //Console.WriteLine("Ejecutandose Hilo");
                     Thread.Sleep(1);
+                    if (procesoImg.Location.X >= procesadorImg.Location.X)
+                    {
+                        miHilo.Dequeue().Abort();
+                    }
+                    
                 }
             }
             catch (ThreadAbortException abortException)
@@ -80,12 +57,6 @@ namespace Procesos_Hilos
         private void Form1_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
-            new Point(procesoImg.Location.X + 1, procesoImg.Location.Y);
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
     }
 }

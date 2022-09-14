@@ -31,9 +31,9 @@ namespace Procesos_Hilos
         {
             this.button1 = new System.Windows.Forms.Button();
             this.procesoImg = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.procesadorImg = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.procesadorImg)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -53,23 +53,23 @@ namespace Procesos_Hilos
             // 
             this.procesoImg.BackColor = System.Drawing.Color.Transparent;
             this.procesoImg.Image = global::Procesos_Hilos.Properties.Resources.proceso;
-            this.procesoImg.Location = new System.Drawing.Point(109, 143);
+            this.procesoImg.Location = new System.Drawing.Point(109, 121);
             this.procesoImg.Name = "procesoImg";
             this.procesoImg.Size = new System.Drawing.Size(114, 115);
             this.procesoImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.procesoImg.TabIndex = 2;
             this.procesoImg.TabStop = false;
             // 
-            // pictureBox1
+            // procesadorImg
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Procesos_Hilos.Properties.Resources.procesador;
-            this.pictureBox1.Location = new System.Drawing.Point(480, 121);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(204, 182);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.procesadorImg.BackColor = System.Drawing.Color.Transparent;
+            this.procesadorImg.Image = global::Procesos_Hilos.Properties.Resources.procesador;
+            this.procesadorImg.Location = new System.Drawing.Point(480, 121);
+            this.procesadorImg.Name = "procesadorImg";
+            this.procesadorImg.Size = new System.Drawing.Size(204, 182);
+            this.procesadorImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.procesadorImg.TabIndex = 1;
+            this.procesadorImg.TabStop = false;
             // 
             // Form1
             // 
@@ -78,15 +78,14 @@ namespace Procesos_Hilos
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.procesoImg);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.procesadorImg);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.procesadorImg)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -94,7 +93,7 @@ namespace Procesos_Hilos
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox procesadorImg;
         private System.Windows.Forms.PictureBox procesoImg;
     }
 }
