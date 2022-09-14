@@ -30,10 +30,10 @@ namespace Procesos_Hilos
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.procesoImg = new System.Windows.Forms.PictureBox();
             this.procesadorImg = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).BeginInit();
+            this.procesoImg = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.procesadorImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -49,6 +49,17 @@ namespace Procesos_Hilos
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // procesadorImg
+            // 
+            this.procesadorImg.BackColor = System.Drawing.Color.Transparent;
+            this.procesadorImg.Image = global::Procesos_Hilos.Properties.Resources.procesador;
+            this.procesadorImg.Location = new System.Drawing.Point(453, 121);
+            this.procesadorImg.Name = "procesadorImg";
+            this.procesadorImg.Size = new System.Drawing.Size(309, 182);
+            this.procesadorImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.procesadorImg.TabIndex = 1;
+            this.procesadorImg.TabStop = false;
+            // 
             // procesoImg
             // 
             this.procesoImg.BackColor = System.Drawing.Color.Transparent;
@@ -59,17 +70,6 @@ namespace Procesos_Hilos
             this.procesoImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.procesoImg.TabIndex = 2;
             this.procesoImg.TabStop = false;
-            // 
-            // procesadorImg
-            // 
-            this.procesadorImg.BackColor = System.Drawing.Color.Transparent;
-            this.procesadorImg.Image = global::Procesos_Hilos.Properties.Resources.procesador;
-            this.procesadorImg.Location = new System.Drawing.Point(480, 121);
-            this.procesadorImg.Name = "procesadorImg";
-            this.procesadorImg.Size = new System.Drawing.Size(204, 182);
-            this.procesadorImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.procesadorImg.TabIndex = 1;
-            this.procesadorImg.TabStop = false;
             // 
             // Form1
             // 
@@ -84,8 +84,8 @@ namespace Procesos_Hilos
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.procesadorImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).EndInit();
             this.ResumeLayout(false);
 
         }

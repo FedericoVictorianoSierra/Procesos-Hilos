@@ -25,11 +25,11 @@ namespace Procesos_Hilos
             try
             {
                 miHilo.Peek().Start();
-            } catch (System.Threading.ThreadStateException ex)
+            } catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
             {
 
             }
-            Console.WriteLine(miHilo.Count + " procesos");
+            //Console.WriteLine(miHilo.Count + " procesos en espera");
         }
 
         void simulacionHilo()
@@ -45,7 +45,6 @@ namespace Procesos_Hilos
                     {
                         miHilo.Dequeue().Abort();
                     }
-                    
                 }
             }
             catch (ThreadAbortException abortException)
