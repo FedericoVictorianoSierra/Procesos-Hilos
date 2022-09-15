@@ -21,8 +21,9 @@ namespace Procesos_Hilos
         }
 
         private List<Thread> miHilo = new List<Thread>();
-        private float[] tiempo = { 3.4f, 5.2f, 1.3f, 6.8f};
-        private int numSelect;
+        private List<float> tiempo = new List<float>();
+        private int numSelect = 0;
+        PictureBox img = null;
         void NuevoHilo()
         {
             miHilo.Add(new Thread(simulacionHilo));//add
@@ -30,19 +31,45 @@ namespace Procesos_Hilos
             miHilo.Add(new Thread(simulacionHilo));//add
             miHilo.Add(new Thread(simulacionHilo));//add
 
-            miHilo.ElementAt(CalcularMenor()).Start();
+            tiempo.Add(3);//0
+            tiempo.Add(6);//1
+            tiempo.Add(2);//2
+            tiempo.Add(4);//3
+
+            img0.Location = new Point(33, img0.Location.Y);
+            img1.Location = new Point(33, img1.Location.Y);
+            img2.Location = new Point(33, img2.Location.Y);
+            img3.Location = new Point(33, img3.Location.Y);
+
+            try
+            {
+                try
+                {
+                    miHilo.ElementAt(CalcularMenor()).Start();
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+
+                }
+            }
+            catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
+            {
+
+            }
         }
 
         int CalcularMenor()
         {
-            for (int i = 0; i < tiempo.Length; i++)
+            for (int i = 0; i < tiempo.Count; i++)
             {
-                if (tiempo[i] == tiempo.Min())
+                if (tiempo.ElementAt(i) == tiempo.Min())
                 {
                     numSelect = i;
+                    Console.WriteLine("Menor: " + numSelect);
                     return i;
                 }
             }
+            Console.WriteLine("Error");
             return 0;
         }
 
@@ -50,7 +77,6 @@ namespace Procesos_Hilos
          {
              try
              {
-                PictureBox img = null;
                 switch(numSelect)
                 {
                     case 0: img = img0;
@@ -62,9 +88,9 @@ namespace Procesos_Hilos
                     case 3: img = img3;
                         break;
                 }
+                
                 while (true)
                  {
-
                      img.Location = new Point(img.Location.X + 1, img.Location.Y);
                      Thread.Sleep(1);
                      if (img.Location.X >= procesadorImg.Location.X)
@@ -75,18 +101,22 @@ namespace Procesos_Hilos
              }
              catch (ThreadAbortException abortException)
              {
-                 Console.WriteLine((string)abortException.ExceptionState);
+                 //Console.WriteLine((string)abortException.ExceptionState);
              }
              finally
              {
                  if (miHilo.Count > 0)
                  {
-                    //tiempo = tiempo.Skip(numSelect).ToArray();
-                    tiempo[numSelect] = 1000;
-                    Console.WriteLine(numSelect);
-                    //miHilo.RemoveAt(numSelect);
-                    try { 
-                        miHilo.ElementAt(CalcularMenor()).Start();
+                    tiempo.RemoveAt(numSelect);
+                    miHilo.RemoveAt(numSelect);
+                    try
+                    {
+                        try {
+                            miHilo.ElementAt(CalcularMenor()).Start();
+                        }catch(ArgumentOutOfRangeException ex)
+                        {
+
+                        }
                     }
                     catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
                     {
