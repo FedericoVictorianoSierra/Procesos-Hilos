@@ -21,73 +21,56 @@ namespace Procesos_Hilos
         }
 
         private List<Thread> miHilo = new List<Thread>();
-        private List<Thread> miHilo1 = new List<Thread>();
-        private int[] tiempo = new int[4];
-        //private int posicionMenor = 0;
+        private float[] tiempo = { 3.4f, 5.2f, 1.3f, 6.8f};
+        private int numSelect;
         void NuevoHilo()
         {
             miHilo.Add(new Thread(simulacionHilo));//add
-            miHilo1.Add(new Thread(simulacionHilo1));//add
+            miHilo.Add(new Thread(simulacionHilo));//add
+            miHilo.Add(new Thread(simulacionHilo));//add
+            miHilo.Add(new Thread(simulacionHilo));//add
 
+            miHilo.ElementAt(CalcularMenor()).Start();
+        }
 
-            
-            tiempo[0] = 3;
-            tiempo[1] = 5;
-            tiempo[2] = 1;
-            tiempo[3] = 6;
-            
-            
-            Array.Sort(tiempo);
-            
-            int menor = tiempo[0];
-            int mayor = tiempo[3];
-            MessageBox.Show("Menor número");
-            MessageBox.Show(menor.ToString());
-            MessageBox.Show("Mayor número");
-            MessageBox.Show(mayor.ToString());
-            MessageBox.Show("Menor a Mayor");
-            MessageBox.Show(tiempo.ToString());
-
-            Array.Reverse(tiempo);
-            MessageBox.Show("Mayor a Menor");
-            MessageBox.Show(tiempo.ToString());
-
-
-
-            miHilo.ElementAt(menor).Start();
-
-                try
+        int CalcularMenor()
+        {
+            for (int i = 0; i < tiempo.Length; i++)
+            {
+                if (tiempo[i] == tiempo.Min())
                 {
-                    miHilo.ElementAt(menor).Start();
+                    numSelect = i;
+                    return i;
                 }
-                catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
-                {
-
-                }
-                Console.WriteLine(miHilo.Count + " procesos en espera");
-
-            
-
-
-         }
+            }
+            return 0;
+        }
 
          void simulacionHilo()
          {
              try
              {
-                 
-                 while (true)
+                PictureBox img = null;
+                switch(numSelect)
+                {
+                    case 0: img = img0;
+                        break;
+                    case 1: img = img1;
+                        break;
+                    case 2: img = img2;
+                        break;
+                    case 3: img = img3;
+                        break;
+                }
+                while (true)
                  {
-                     img1.Location = new Point(img1.Location.X + 1, img1.Location.Y);
+
+                     img.Location = new Point(img.Location.X + 1, img.Location.Y);
                      Thread.Sleep(1);
-                     if (img1.Location.X >= procesadorImg.Location.X)
+                     if (img.Location.X >= procesadorImg.Location.X)
                      {
-                         /*miHilo.ElementAt(0).Abort();
-                         miHilo.RemoveAt(0);*/
-
+                        miHilo.ElementAt(numSelect).Abort();
                      }
-
-                    
                 }
              }
              catch (ThreadAbortException abortException)
@@ -98,15 +81,29 @@ namespace Procesos_Hilos
              {
                  if (miHilo.Count > 0)
                  {
-                    miHilo.ElementAt(tiempo[4]).Start();
-                     Console.WriteLine(miHilo.Count + " procesos en espera");
-                 }
+                    //tiempo = tiempo.Skip(numSelect).ToArray();
+                    tiempo[numSelect] = 1000;
+                    Console.WriteLine(numSelect);
+                    //miHilo.RemoveAt(numSelect);
+                    try { 
+                        miHilo.ElementAt(CalcularMenor()).Start();
+                    }
+                    catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
+                    {
+
+                    }
+                }
              }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             NuevoHilo();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            CheckForIllegalCrossThreadCalls = false;
         }
     }
 }
