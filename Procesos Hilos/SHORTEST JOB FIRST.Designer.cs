@@ -44,9 +44,9 @@
             // procesadorImg
             // 
             this.procesadorImg.Image = global::Procesos_Hilos.Properties.Resources.procesador;
-            this.procesadorImg.Location = new System.Drawing.Point(513, 123);
+            this.procesadorImg.Location = new System.Drawing.Point(374, 24);
             this.procesadorImg.Name = "procesadorImg";
-            this.procesadorImg.Size = new System.Drawing.Size(205, 190);
+            this.procesadorImg.Size = new System.Drawing.Size(426, 382);
             this.procesadorImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.procesadorImg.TabIndex = 0;
             this.procesadorImg.TabStop = false;
@@ -73,6 +73,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Tarea";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // img2
             // 
