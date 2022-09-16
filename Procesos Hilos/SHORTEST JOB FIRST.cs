@@ -22,81 +22,67 @@ namespace Procesos_Hilos
 
         private List<Thread> miHilo = new List<Thread>();
         private List<float> tiempo = new List<float>();
-        private int numSelect = 0;
-        PictureBox img = null;
+        private List<PictureBox> img = new List<PictureBox>();
+
+        private int numSelect;
         void NuevoHilo()
         {
-            miHilo.Add(new Thread(simulacionHilo));//add
-            miHilo.Add(new Thread(simulacionHilo));//add
-            miHilo.Add(new Thread(simulacionHilo));//add
-            miHilo.Add(new Thread(simulacionHilo));//add
+            miHilo.Clear();
+            tiempo.Clear();
+            img.Clear();
+
+            miHilo.Add(new Thread(simulacionHilo));
+            miHilo.Add(new Thread(simulacionHilo));
+            miHilo.Add(new Thread(simulacionHilo));
+            miHilo.Add(new Thread(simulacionHilo));
 
             tiempo.Add(3);//0
             tiempo.Add(6);//1
             tiempo.Add(2);//2
             tiempo.Add(4);//3
 
-            img0.Location = new Point(33, img0.Location.Y);
-            img1.Location = new Point(33, img1.Location.Y);
-            img2.Location = new Point(33, img2.Location.Y);
-            img3.Location = new Point(33, img3.Location.Y);
+            img.Add(img0);
+            img.Add(img1);
+            img.Add(img2);
+            img.Add(img3);
 
-            try
+            for (int i = 0; i < img.Count; i++)
             {
-                try
-                {
-                    miHilo.ElementAt(CalcularMenor()).Start();
-                }
-                catch (ArgumentOutOfRangeException ex)
-                {
+                img.ElementAt(i).Location = new Point(33, img.ElementAt(i).Location.Y);
+            }       
 
-                }
-            }
-            catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
-            {
-
-            }
+            miHilo.ElementAt(CalcularMenor()).Start();
         }
 
         int CalcularMenor()
         {
+            /*for (int i = 0; i < tiempo.Count; i++)
+            {
+                Console.WriteLine(tiempo.ElementAt(i));
+            }*/
             for (int i = 0; i < tiempo.Count; i++)
             {
                 if (tiempo.ElementAt(i) == tiempo.Min())
                 {
-                    numSelect = i;
-                    Console.WriteLine("Menor: " + numSelect);
-                    return i;
+                    //Console.WriteLine("Menor: " + i);
+                    return (numSelect = i);
                 }
             }
-            Console.WriteLine("Error");
-            return 0;
+            return -1;
         }
 
          void simulacionHilo()
          {
              try
              {
-                switch(numSelect)
-                {
-                    case 0: img = img0;
-                        break;
-                    case 1: img = img1;
-                        break;
-                    case 2: img = img2;
-                        break;
-                    case 3: img = img3;
-                        break;
-                }
-                
                 while (true)
-                 {
-                     img.Location = new Point(img.Location.X + 1, img.Location.Y);
-                     Thread.Sleep(1);
-                     if (img.Location.X >= procesadorImg.Location.X)
-                     {
+                {
+                    img.ElementAt(numSelect).Location = new Point(img.ElementAt(numSelect).Location.X + 1, img.ElementAt(numSelect).Location.Y);
+                    Thread.Sleep(1);
+                    if (img.ElementAt(numSelect).Location.X >= procesadorImg.Location.X)
+                    {
                         miHilo.ElementAt(numSelect).Abort();
-                     }
+                    }
                 }
              }
              catch (ThreadAbortException abortException)
@@ -105,26 +91,15 @@ namespace Procesos_Hilos
              }
              finally
              {
-                 if (miHilo.Count > 0)
-                 {
-                    tiempo.RemoveAt(numSelect);
-                    miHilo.RemoveAt(numSelect);
-                    try
-                    {
-                        try {
-                            miHilo.ElementAt(CalcularMenor()).Start();
-                        }catch(ArgumentOutOfRangeException ex)
-                        {
-
-                        }
-                    }
-                    catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
-                    {
-
-                    }
+                tiempo.RemoveAt(numSelect);
+                miHilo.RemoveAt(numSelect);
+                img.RemoveAt(numSelect);
+                if (miHilo.Count >= 1)
+                {
+                    miHilo.ElementAt(CalcularMenor()).Start();
                 }
              }
-        }
+         }
 
         private void button1_Click(object sender, EventArgs e)
         {
