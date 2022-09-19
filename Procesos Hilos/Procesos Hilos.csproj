@@ -69,6 +69,9 @@
     <EmbeddedResource Include="FIFO.resx">
       <DependentUpon>FIFO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ROUNDROBIN.resx">
+      <DependentUpon>ROUNDROBIN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SHORTEST JOB FIRST.resx">
       <DependentUpon>SHORTEST JOB FIRST.cs</DependentUpon>
     </EmbeddedResource>
