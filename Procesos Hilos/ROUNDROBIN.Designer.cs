@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.procesoImg = new System.Windows.Forms.PictureBox();
+            this.proceso1 = new System.Windows.Forms.PictureBox();
             this.procesadorImg = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).BeginInit();
+            this.proceso2 = new System.Windows.Forms.PictureBox();
+            this.proceso3 = new System.Windows.Forms.PictureBox();
+            this.proceso4 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.procesadorImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso4)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -44,81 +46,90 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(96)))), ((int)(((byte)(97)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(35, 36);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(26, 29);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 47);
+            this.button1.Size = new System.Drawing.Size(105, 38);
             this.button1.TabIndex = 1;
             this.button1.Text = "Tarea";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // procesoImg
+            // proceso1
             // 
-            this.procesoImg.BackColor = System.Drawing.Color.Transparent;
-            this.procesoImg.Image = global::Procesos_Hilos.Properties.Resources.proceso;
-            this.procesoImg.Location = new System.Drawing.Point(100, 129);
-            this.procesoImg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.procesoImg.Name = "procesoImg";
-            this.procesoImg.Size = new System.Drawing.Size(101, 96);
-            this.procesoImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.procesoImg.TabIndex = 3;
-            this.procesoImg.TabStop = false;
+            this.proceso1.BackColor = System.Drawing.Color.Transparent;
+            this.proceso1.Image = global::Procesos_Hilos.Properties.Resources.proceso;
+            this.proceso1.Location = new System.Drawing.Point(75, 76);
+            this.proceso1.Name = "proceso1";
+            this.proceso1.Size = new System.Drawing.Size(76, 78);
+            this.proceso1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.proceso1.TabIndex = 3;
+            this.proceso1.TabStop = false;
             // 
             // procesadorImg
             // 
             this.procesadorImg.BackColor = System.Drawing.Color.Transparent;
             this.procesadorImg.Image = global::Procesos_Hilos.Properties.Resources.procesador;
-            this.procesadorImg.Location = new System.Drawing.Point(476, 93);
-            this.procesadorImg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.procesadorImg.Location = new System.Drawing.Point(336, 76);
             this.procesadorImg.Name = "procesadorImg";
-            this.procesadorImg.Size = new System.Drawing.Size(645, 448);
+            this.procesadorImg.Size = new System.Drawing.Size(463, 374);
             this.procesadorImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.procesadorImg.TabIndex = 4;
             this.procesadorImg.TabStop = false;
             // 
-            // pictureBox1
+            // proceso2
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Procesos_Hilos.Properties.Resources.proceso;
-            this.pictureBox1.Location = new System.Drawing.Point(100, 266);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(101, 96);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.proceso2.BackColor = System.Drawing.Color.Transparent;
+            this.proceso2.Image = global::Procesos_Hilos.Properties.Resources.proceso;
+            this.proceso2.Location = new System.Drawing.Point(75, 174);
+            this.proceso2.Name = "proceso2";
+            this.proceso2.Size = new System.Drawing.Size(76, 78);
+            this.proceso2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.proceso2.TabIndex = 5;
+            this.proceso2.TabStop = false;
             // 
-            // pictureBox2
+            // proceso3
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::Procesos_Hilos.Properties.Resources.proceso;
-            this.pictureBox2.Location = new System.Drawing.Point(100, 405);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(101, 96);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
+            this.proceso3.BackColor = System.Drawing.Color.Transparent;
+            this.proceso3.Image = global::Procesos_Hilos.Properties.Resources.proceso;
+            this.proceso3.Location = new System.Drawing.Point(75, 270);
+            this.proceso3.Name = "proceso3";
+            this.proceso3.Size = new System.Drawing.Size(76, 78);
+            this.proceso3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.proceso3.TabIndex = 6;
+            this.proceso3.TabStop = false;
+            this.proceso3.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // proceso4
+            // 
+            this.proceso4.BackColor = System.Drawing.Color.Transparent;
+            this.proceso4.Image = global::Procesos_Hilos.Properties.Resources.proceso;
+            this.proceso4.Location = new System.Drawing.Point(75, 362);
+            this.proceso4.Name = "proceso4";
+            this.proceso4.Size = new System.Drawing.Size(76, 78);
+            this.proceso4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.proceso4.TabIndex = 7;
+            this.proceso4.TabStop = false;
             // 
             // Form3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.procesadorImg);
-            this.Controls.Add(this.procesoImg);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(854, 487);
+            this.Controls.Add(this.proceso4);
+            this.Controls.Add(this.proceso3);
+            this.Controls.Add(this.proceso2);
+            this.Controls.Add(this.proceso1);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.procesadorImg);
             this.Name = "Form3";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form3_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.procesoImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.procesadorImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proceso4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -126,9 +137,10 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox procesoImg;
+        private System.Windows.Forms.PictureBox proceso1;
         private System.Windows.Forms.PictureBox procesadorImg;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox proceso2;
+        private System.Windows.Forms.PictureBox proceso3;
+        private System.Windows.Forms.PictureBox proceso4;
     }
 }
