@@ -27,6 +27,7 @@ namespace Procesos_Hilos
         private int numSelect;
         void NuevoHilo()
         {
+            Random rand = new Random();
             miHilo.Clear();
             tiempo.Clear();
             img.Clear();
@@ -36,10 +37,14 @@ namespace Procesos_Hilos
             miHilo.Add(new Thread(simulacionHilo));
             miHilo.Add(new Thread(simulacionHilo));
 
-            tiempo.Add(3);//0
-            tiempo.Add(6);//1
-            tiempo.Add(2);//2
-            tiempo.Add(4);//3
+            tiempo.Add(rand.Next(1, 9));//0
+            label1.Text = tiempo.ElementAt(0).ToString();
+            tiempo.Add(rand.Next(1, 9));//1
+            label2.Text = tiempo.ElementAt(1).ToString();
+            tiempo.Add(rand.Next(1, 9));//2
+            label3.Text = tiempo.ElementAt(2).ToString();
+            tiempo.Add(rand.Next(1, 9));//3
+            label4.Text = tiempo.ElementAt(3).ToString();
 
             img.Add(img0);
             img.Add(img1);
