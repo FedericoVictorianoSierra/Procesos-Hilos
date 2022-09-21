@@ -67,11 +67,13 @@
             // 
             // procesadorImg
             // 
+            this.procesadorImg.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.procesadorImg.BackColor = System.Drawing.Color.Transparent;
             this.procesadorImg.Image = global::Procesos_Hilos.Properties.Resources.procesador;
-            this.procesadorImg.Location = new System.Drawing.Point(336, 76);
+            this.procesadorImg.Location = new System.Drawing.Point(402, 76);
+            this.procesadorImg.Margin = new System.Windows.Forms.Padding(0);
             this.procesadorImg.Name = "procesadorImg";
-            this.procesadorImg.Size = new System.Drawing.Size(463, 374);
+            this.procesadorImg.Size = new System.Drawing.Size(358, 328);
             this.procesadorImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.procesadorImg.TabIndex = 4;
             this.procesadorImg.TabStop = false;

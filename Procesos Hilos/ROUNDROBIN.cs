@@ -63,10 +63,10 @@ namespace Procesos_Hilos
             while (true)
             {
                 proceso1.Location = new Point(proceso1.Location.X + 1, proceso1.Location.Y);
-                Thread.Sleep(15);
+                Thread.Sleep(TimeSleep());
                 if (proceso1.Location.X >= procesadorImg.Location.X)
                 {
-                    Thread.Sleep(rand.Next(1500, 4000));
+                    Thread.Sleep(NewRandom());
                     proceso1.Visible = false;
                     miHilo.ElementAt(0).Abort();
                 }
@@ -78,10 +78,10 @@ namespace Procesos_Hilos
             while (true)
             {
                 proceso2.Location = new Point(proceso2.Location.X + 1, proceso2.Location.Y);
-                Thread.Sleep(15);
+                Thread.Sleep(TimeSleep());
                 if (proceso2.Location.X >= procesadorImg.Location.X)
                 {
-                    Thread.Sleep(rand.Next(1500, 4000));
+                    Thread.Sleep(NewRandom());
                     proceso2.Visible = false;
                     miHilo.ElementAt(1).Abort();
                 }
@@ -93,10 +93,10 @@ namespace Procesos_Hilos
             while (true)
             {
                 proceso3.Location = new Point(proceso3.Location.X + 1, proceso3.Location.Y);
-                Thread.Sleep(15);
+                Thread.Sleep(TimeSleep());
                 if (proceso3.Location.X >= procesadorImg.Location.X)
                 {
-                    Thread.Sleep(rand.Next(1500, 4000));
+                    Thread.Sleep(NewRandom());
                     proceso3.Visible = false;
                     miHilo.ElementAt(2).Abort();
                 }
@@ -108,14 +108,23 @@ namespace Procesos_Hilos
             while (true)
             {
                 proceso4.Location = new Point(proceso4.Location.X + 1, proceso4.Location.Y);
-                Thread.Sleep(15);
+                Thread.Sleep(TimeSleep());
                 if (proceso4.Location.X >= procesadorImg.Location.X)
                 {
-                    Thread.Sleep(rand.Next(1500, 4000));
+                    Thread.Sleep(NewRandom());
                     proceso4.Visible = false;
                     miHilo.ElementAt(3).Abort();
                 }
             }
+        }
+        int TimeSleep()
+        {
+            return 12;
+        }
+
+        int NewRandom()
+        {
+            return rand.Next(2000, 8000);
         }
     }
 }
