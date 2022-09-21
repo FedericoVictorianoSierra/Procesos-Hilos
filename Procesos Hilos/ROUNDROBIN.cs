@@ -124,6 +124,11 @@ namespace Procesos_Hilos
 
         int NewRandom()
         {
+            return rand.Next(NewRandom2(), 10000);
+        }
+
+        int NewRandom2()
+        {
             return rand.Next(2000, 8000);
         }
     }
