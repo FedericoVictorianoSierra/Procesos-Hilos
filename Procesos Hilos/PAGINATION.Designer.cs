@@ -29,7 +29,6 @@ namespace Procesos_Hilos
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.slot0 = new System.Windows.Forms.Button();
             this.slot1 = new System.Windows.Forms.Button();
@@ -38,7 +37,6 @@ namespace Procesos_Hilos
             this.slot4 = new System.Windows.Forms.Button();
             this.slot5 = new System.Windows.Forms.Button();
             this.slot6 = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -122,19 +120,15 @@ namespace Procesos_Hilos
             this.slot6.TabIndex = 7;
             this.slot6.UseVisualStyleBackColor = false;
             // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // listBox1
             // 
+            this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(177, 63);
+            this.listBox1.Location = new System.Drawing.Point(149, 65);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(79, 329);
+            this.listBox1.Size = new System.Drawing.Size(273, 329);
             this.listBox1.TabIndex = 15;
+            this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             // 
             // PAGINATION
             // 
@@ -168,7 +162,6 @@ namespace Procesos_Hilos
         private System.Windows.Forms.Button slot4;
         private System.Windows.Forms.Button slot5;
         private System.Windows.Forms.Button slot6;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListBox listBox1;
     }
 }
