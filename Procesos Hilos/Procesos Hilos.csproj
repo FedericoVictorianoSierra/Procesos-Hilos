@@ -52,6 +52,12 @@
     <Compile Include="FIFO.Designer.cs">
       <DependentUpon>FIFO.cs</DependentUpon>
     </Compile>
+    <Compile Include="PAGINATION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PAGINATION.Designer.cs">
+      <DependentUpon>PAGINATION.cs</DependentUpon>
+    </Compile>
     <Compile Include="ROUNDROBIN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FIFO.resx">
       <DependentUpon>FIFO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGINATION.resx">
+      <DependentUpon>PAGINATION.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ROUNDROBIN.resx">
       <DependentUpon>ROUNDROBIN.cs</DependentUpon>
