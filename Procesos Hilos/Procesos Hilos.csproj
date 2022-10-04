@@ -122,5 +122,8 @@
   <ItemGroup>
     <None Include="img\procesador.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="img\RAM.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

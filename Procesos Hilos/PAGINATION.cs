@@ -31,117 +31,177 @@ namespace Procesos_Hilos
             Marco[6] = slot6;
         }
         Random rand = new Random();
-        private Queue<Thread> miHilo = new Queue<Thread>();
-        private Queue<int> TamanioPagina = new Queue<int>();
-        private Queue<Color> colorSlot = new Queue<Color>();
-        private Queue<int> iteration = new Queue<int>();
-
-        private Queue<Thread> HiloEnEspera = new Queue<Thread>();
-        private Queue<int> TamanioPaginaEnEspera = new Queue<int>();
-        private Queue<Color> colorSlotEnEspera = new Queue<Color>();
-
-        private List<Thread> HiloEnEjecucion = new List<Thread>();
-        private List<int> TamanioPaginaEnEjecucion = new List<int>();
-        private List<Color> colorSlotEnEjecucion = new List<Color>();
-
-        private int listEjecutandose = -1;
+        private List<Thread> miHilo = new List<Thread>();
+        private List<int> espacio = new List<int>();
         private void Simular()
         {
-            TamanioPagina.Enqueue(rand.Next(1, 4));
-            colorSlot.Enqueue(Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)));
-            miHilo.Enqueue(new Thread(simulacionHilo));
-            //listBox1.Items.Add(TamanioPagina.ElementAt(TamanioPagina.Count-1));
-            //listBox1.Items.Add(colorSlot.ElementAt(colorSlot.Count - 1));
-            StartThread();
+            miHilo.Clear();
+            espacio.Clear();
+
+            miHilo.Add(new Thread(simulacionHilo0));
+            miHilo.Add(new Thread(simulacionHilo1));
+            miHilo.Add(new Thread(simulacionHilo2));
+            miHilo.Add(new Thread(simulacionHilo3));
+            miHilo.Add(new Thread(simulacionHilo4));
+
+            espacio.Add(1);
+            espacio.Add(2);
+            espacio.Add(3);
+            espacio.Add(4);
+            espacio.Add(5);
+
+            label1.Text = espacio.ElementAt(0).ToString();
+            label2.Text = espacio.ElementAt(1).ToString();
+            label3.Text = espacio.ElementAt(2).ToString();
+            label4.Text = espacio.ElementAt(3).ToString();
+            label5.Text = espacio.ElementAt(4).ToString();
+
+            image0.Visible = true;
+            image1.Visible = true;
+            image2.Visible = true;
+            image3.Visible = true;
+            image4.Visible = true;
+
+            image0.Location = new Point(29, image0.Location.Y);
+            image1.Location = new Point(29, image1.Location.Y);
+            image2.Location = new Point(29, image2.Location.Y);
+            image3.Location = new Point(29, image3.Location.Y);
+            image4.Location = new Point(29, image4.Location.Y);
+
+            for (int i = 0; i < miHilo.Count; i++)
+            {
+                miHilo.ElementAt(i).Start();
+            }
         }
 
-        public void StartThread()
+        bool HayEspacioParaElProceso(int proceso)
         {
-            int vacios = 0;
-            for (int k = 0; k < Marco.Length; k++)
+            int libre = 0;
+            for (int i = 0; i < Marco.Length; i++)
             {
-                if (Marco[k].BackColor == Color.Transparent)
+                if (Marco[i].BackColor == Color.Transparent)
                 {
-                    vacios++;//contar cuantos marcos estan vacios
+                    libre++;
                 }
             }
-            if(TamanioPagina.Count <= 0)
+            if(libre >= espacio.ElementAt(proceso))
             {
-                miHilo.Enqueue(HiloEnEspera.Dequeue());
-                TamanioPagina.Enqueue(TamanioPaginaEnEspera.Dequeue());
-                colorSlot.Enqueue(colorSlotEnEspera.Dequeue());
+                return true;
             }
-            for (int i = 0; i < TamanioPagina.Count; i++)// deseocolar
+            else
             {
-                int num = TamanioPagina.Peek();
-                if (TamanioPagina.Peek() <= vacios && HiloEnEspera.Count <= 0)//el que sea menor o igual a los desocupados y no hayan hilos en espera
-                {
-                    if (miHilo.Peek().ThreadState == ThreadState.Unstarted)
-                    {
-                        for (int j = 0; j < Marco.Length; j++)//ocupar segun el tamaño de las paginas que contenga el proceso
-                        {
-                            if (Marco[j].BackColor == Color.Transparent && num > 0)//verificar que el espacio este vacio
-                            {
-                                Marco[j].BackColor = colorSlot.Peek();//ocupar el espacio indicando con color
-                                num--;
-                            }
-                        }
-
-                        //iniciar proceso
-                        //listBox1.Items.RemoveAt(0);
-                        //iteration.Enqueue(i);
-                        TamanioPaginaEnEjecucion.Add(TamanioPagina.Dequeue());
-                        colorSlotEnEjecucion.Add(colorSlot.Dequeue());
-                        HiloEnEjecucion.Add(miHilo.Dequeue());
-                        listEjecutandose++;
-                        HiloEnEjecucion.ElementAt(listEjecutandose).Start();
-                    }
-                }
-                else
-                {
-                    HiloEnEspera.Enqueue(miHilo.Dequeue());
-                    TamanioPaginaEnEspera.Enqueue(TamanioPagina.Dequeue());
-                    colorSlotEnEspera.Enqueue(colorSlot.Dequeue());
-                    //se va a espera
-                    //break;
-                }
+                return false;
             }
         }
 
-        public void simulacionHilo()
+        int TamanoOcupado(PictureBox image)
+        {
+            int tam = 0;
+            for (int i = 0; i < Marco.Length; i++)
+            {
+                if (Marco[i].BackColor == image.BackColor)
+                {
+                    tam++;
+                }
+            }
+            return tam;
+        }
+
+        bool EnEjecucion(PictureBox image)
+        {
+            for (int i = 0; i < Marco.Length; i++)
+            {
+                if (Marco[i].BackColor == image.BackColor)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void Proceso(PictureBox image, int proceso)
         {
             try
             {
                 while (true)
                 {
-                    Thread.Sleep(/*rand.Next(4000, 8000)*/ 4000);
-                    HiloEnEjecucion.ElementAt(listEjecutandose).Abort();
+                    Thread.Sleep(TimeSleep());
+                    if (image.Location.X >= imgProcesador.Location.X)
+                    {
+                        if (HayEspacioParaElProceso(proceso))
+                        {
+                            for (int i = 0; i < Marco.Length; i++)
+                            {
+                                if (Marco[i].BackColor == Color.Transparent && (TamanoOcupado(image) <= espacio.ElementAt(proceso)))
+                                {
+                                    Marco[i].BackColor = image.BackColor;
+                                }
+                            }
+                            Thread.Sleep(NewRandom());
+                            image.Visible = false;
+                            miHilo.ElementAt(proceso).Abort();
+                        }
+                    }
+                    else
+                    {
+                        image.Location = new Point(image.Location.X + 1, image.Location.Y);//avanzar
+                    }
                 }
             }
             catch (ThreadAbortException abortException)
             {
-                //Console.WriteLine((string)abortException.ExceptionState);
+                Console.WriteLine((string)abortException.ExceptionState);
             }
             finally
             {
                 for (int i = 0; i < Marco.Length; i++)
                 {
-                    if (Marco[i].BackColor == colorSlotEnEjecucion.ElementAt(listEjecutandose))
+                    if (Marco[i].BackColor == image.BackColor)
                     {
                         Marco[i].BackColor = Color.Transparent;
                     }
                 }
-
-                //colorSlotEnEjecucion.RemoveAt(0);
-                //TamanioPaginaEnEjecucion.RemoveAt(0);
-                //HiloEnEjecucion.RemoveAt(0);
-                //iteration.Dequeue();
-                if (miHilo.Count > 0 || HiloEnEspera.Count > 0)
-                {
-                    //dar paso al siguiente
-                    StartThread();
-                }
             }
+        }
+
+        void simulacionHilo0()
+        {
+            Proceso(image0, 0);
+        }
+
+        void simulacionHilo1()
+        {
+            Proceso(image1, 1);
+        }
+
+        void simulacionHilo2()
+        {
+            Proceso(image2, 2);
+        }
+
+        void simulacionHilo3()
+        {
+            Proceso(image3, 3);
+        }
+
+        void simulacionHilo4()
+        {
+            Proceso(image4, 4);
+        }
+
+        int TimeSleep()
+        {
+            return 12;
+        }
+
+        int NewRandom()
+        {
+            return rand.Next(NewRandom2(), 10000);
+        }
+
+        int NewRandom2()
+        {
+            return rand.Next(2000, 8000);
         }
 
         private void PAGINATION_Load(object sender, EventArgs e)
@@ -152,19 +212,6 @@ namespace Procesos_Hilos
         private void button1_Click(object sender, EventArgs e)
         {
             Simular();
-        }
-
-        private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            /*Graphics g = e.Graphics;
-            Rectangle rect = e.Bounds;
-            if (e.Index >= 0)
-            {
-                Font f = new Font("Arial", 12, FontStyle.Regular);
-                Brush b = new SolidBrush(((Color)((ListBox)sender).Items[e.Index]));
-                g.DrawString(TamanioPagina.ElementAt(iteration.Peek()).ToString(), f, Brushes.Black, rect.X, rect.Top);
-                g.FillRectangle(b, rect.X + 50, rect.Y + 5, rect.Width - 10, rect.Height - 5);
-            }*/
         }
     }
 }
