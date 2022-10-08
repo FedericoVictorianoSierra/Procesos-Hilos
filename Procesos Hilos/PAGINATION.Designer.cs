@@ -37,7 +37,7 @@ namespace Procesos_Hilos
             this.slot4 = new System.Windows.Forms.Button();
             this.slot5 = new System.Windows.Forms.Button();
             this.slot6 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ram = new System.Windows.Forms.PictureBox();
             this.image0 = new System.Windows.Forms.PictureBox();
             this.image4 = new System.Windows.Forms.PictureBox();
             this.image3 = new System.Windows.Forms.PictureBox();
@@ -49,7 +49,7 @@ namespace Procesos_Hilos
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ram)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image3)).BeginInit();
@@ -138,15 +138,15 @@ namespace Procesos_Hilos
             this.slot6.TabIndex = 7;
             this.slot6.UseVisualStyleBackColor = false;
             // 
-            // pictureBox1
+            // ram
             // 
-            this.pictureBox1.Image = global::Procesos_Hilos.Properties.Resources.RAM;
-            this.pictureBox1.Location = new System.Drawing.Point(607, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(190, 416);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
+            this.ram.Image = global::Procesos_Hilos.Properties.Resources.RAM;
+            this.ram.Location = new System.Drawing.Point(607, 12);
+            this.ram.Name = "ram";
+            this.ram.Size = new System.Drawing.Size(190, 416);
+            this.ram.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ram.TabIndex = 26;
+            this.ram.TabStop = false;
             // 
             // image0
             // 
@@ -288,11 +288,11 @@ namespace Procesos_Hilos
             this.Controls.Add(this.slot1);
             this.Controls.Add(this.slot0);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.ram);
             this.Name = "PAGINATION";
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.PAGINATION_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ram)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.image0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.image4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.image3)).EndInit();
@@ -320,7 +320,7 @@ namespace Procesos_Hilos
         private System.Windows.Forms.PictureBox image2;
         private System.Windows.Forms.PictureBox image1;
         private System.Windows.Forms.PictureBox imgProcesador;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox ram;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

@@ -38,11 +38,21 @@ namespace Procesos_Hilos
         Random rand = new Random();
         void StartPagination()
         {
+            procesoImg.Clear();
+            miHilo.Clear();
+            espacio.Clear();
+
             miHilo.Enqueue(new Thread(simulacionHilo));//add
             miHilo.Enqueue(new Thread(simulacionHilo));//add
             miHilo.Enqueue(new Thread(simulacionHilo));//add
             miHilo.Enqueue(new Thread(simulacionHilo));//add
             miHilo.Enqueue(new Thread(simulacionHilo));//add
+
+            image1.Visible = true;
+            image2.Visible = true;
+            image3.Visible = true;
+            image4.Visible = true;
+            image5.Visible = true;
 
             procesoImg.Enqueue(image1);
             procesoImg.Enqueue(image2);
@@ -90,6 +100,7 @@ namespace Procesos_Hilos
                         }
                          
                         Thread.Sleep(2000);
+                        procesoImg.Peek().Visible = false;
                         miHilo.Dequeue().Abort();
                     }
                 }

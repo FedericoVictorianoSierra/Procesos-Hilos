@@ -70,28 +70,19 @@ namespace Procesos_Hilos
 
             for (int i = 0; i < miHilo.Count; i++)
             {
-                miHilo.ElementAt(i).Start();
+                miHilo.ElementAt(i).Start();//iniciamos todos los hilos
             }
         }
 
-        bool HayEspacioParaElProceso(int proceso)
+        int EspacioLibre()
         {
             int libre = 0;
-            for (int i = 0; i < Marco.Length; i++)
-            {
-                if (Marco[i].BackColor == Color.Transparent)
-                {
+            for (int i = 0; i < Marco.Length; i++){
+                if (Marco[i].BackColor == Color.Transparent){
                     libre++;
                 }
             }
-            if(libre >= espacio.ElementAt(proceso))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return libre;
         }
 
         int TamanoOcupado(PictureBox image)
@@ -107,20 +98,9 @@ namespace Procesos_Hilos
             return tam;
         }
 
-        bool EnEjecucion(PictureBox image)
-        {
-            for (int i = 0; i < Marco.Length; i++)
-            {
-                if (Marco[i].BackColor == image.BackColor)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         void Proceso(PictureBox image, int proceso)
         {
+            int coloreo = 0;
             try
             {
                 while (true)
@@ -128,18 +108,38 @@ namespace Procesos_Hilos
                     Thread.Sleep(TimeSleep());
                     if (image.Location.X >= imgProcesador.Location.X)
                     {
-                        if (HayEspacioParaElProceso(proceso))
+                        if (EspacioLibre() >= espacio.ElementAt(proceso))
                         {
                             for (int i = 0; i < Marco.Length; i++)
                             {
-                                if (Marco[i].BackColor == Color.Transparent && (TamanoOcupado(image) <= espacio.ElementAt(proceso)))
+                                if (Marco[i].BackColor == Color.Transparent)
                                 {
-                                    Marco[i].BackColor = image.BackColor;
+                                    if(TamanoOcupado(image) < espacio.ElementAt(proceso))
+                                    {
+                                        Marco[i].BackColor = image.BackColor;
+                                        coloreo++;
+                                    }
                                 }
                             }
-                            Thread.Sleep(NewRandom());
+                        }
+                        if(image.Location.X >= ram.Location.X)
+                        {
                             image.Visible = false;
                             miHilo.ElementAt(proceso).Abort();
+                        }
+                        else if(TamanoOcupado(image) == espacio.ElementAt(proceso))
+                        {
+                            image.Location = new Point(image.Location.X + 1, image.Location.Y);//avanzar
+                        }
+                        else
+                        {
+                            for (int i = 0; i < Marco.Length; i++)
+                            {
+                                if (Marco[i].BackColor == image.BackColor)
+                                {
+                                    Marco[i].BackColor = Color.Transparent;
+                                }
+                            }
                         }
                     }
                     else
@@ -192,16 +192,6 @@ namespace Procesos_Hilos
         int TimeSleep()
         {
             return 12;
-        }
-
-        int NewRandom()
-        {
-            return rand.Next(NewRandom2(), 10000);
-        }
-
-        int NewRandom2()
-        {
-            return rand.Next(2000, 8000);
         }
 
         private void PAGINATION_Load(object sender, EventArgs e)
