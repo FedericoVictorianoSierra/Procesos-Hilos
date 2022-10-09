@@ -45,6 +45,8 @@ namespace Procesos_Hilos
             this.button3 = new System.Windows.Forms.Button();
             this.imgProcesador = new System.Windows.Forms.PictureBox();
             this.ram = new System.Windows.Forms.PictureBox();
+            this.i7 = new System.Windows.Forms.PictureBox();
+            this.i8 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.i1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.i4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.i0)).BeginInit();
@@ -54,13 +56,15 @@ namespace Procesos_Hilos
             ((System.ComponentModel.ISupportInitialize)(this.i6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProcesador)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ram)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.i7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.i8)).BeginInit();
             this.SuspendLayout();
             // 
             // segmento5
             // 
             this.segmento5.BackColor = System.Drawing.Color.Transparent;
             this.segmento5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.segmento5.Location = new System.Drawing.Point(657, 351);
+            this.segmento5.Location = new System.Drawing.Point(651, 392);
             this.segmento5.Name = "segmento5";
             this.segmento5.Size = new System.Drawing.Size(90, 75);
             this.segmento5.TabIndex = 14;
@@ -70,7 +74,7 @@ namespace Procesos_Hilos
             // 
             this.segmento4.BackColor = System.Drawing.Color.Transparent;
             this.segmento4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.segmento4.Location = new System.Drawing.Point(657, 295);
+            this.segmento4.Location = new System.Drawing.Point(651, 336);
             this.segmento4.Name = "segmento4";
             this.segmento4.Size = new System.Drawing.Size(90, 50);
             this.segmento4.TabIndex = 11;
@@ -80,7 +84,7 @@ namespace Procesos_Hilos
             // 
             this.segmento3.BackColor = System.Drawing.Color.Transparent;
             this.segmento3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.segmento3.Location = new System.Drawing.Point(657, 264);
+            this.segmento3.Location = new System.Drawing.Point(651, 305);
             this.segmento3.Name = "segmento3";
             this.segmento3.Size = new System.Drawing.Size(90, 25);
             this.segmento3.TabIndex = 10;
@@ -90,7 +94,7 @@ namespace Procesos_Hilos
             // 
             this.segmento2.BackColor = System.Drawing.Color.Transparent;
             this.segmento2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.segmento2.Location = new System.Drawing.Point(657, 208);
+            this.segmento2.Location = new System.Drawing.Point(651, 249);
             this.segmento2.Name = "segmento2";
             this.segmento2.Size = new System.Drawing.Size(90, 50);
             this.segmento2.TabIndex = 9;
@@ -100,7 +104,7 @@ namespace Procesos_Hilos
             // 
             this.segmento0.BackColor = System.Drawing.Color.Transparent;
             this.segmento0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.segmento0.Location = new System.Drawing.Point(657, 21);
+            this.segmento0.Location = new System.Drawing.Point(651, 62);
             this.segmento0.Name = "segmento0";
             this.segmento0.Size = new System.Drawing.Size(90, 100);
             this.segmento0.TabIndex = 15;
@@ -165,7 +169,7 @@ namespace Procesos_Hilos
             // 
             this.segmento1.BackColor = System.Drawing.Color.Transparent;
             this.segmento1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.segmento1.Location = new System.Drawing.Point(657, 127);
+            this.segmento1.Location = new System.Drawing.Point(651, 168);
             this.segmento1.Name = "segmento1";
             this.segmento1.Size = new System.Drawing.Size(90, 75);
             this.segmento1.TabIndex = 31;
@@ -206,7 +210,7 @@ namespace Procesos_Hilos
             // imgProcesador
             // 
             this.imgProcesador.Image = global::Procesos_Hilos.Properties.Resources.procesador;
-            this.imgProcesador.Location = new System.Drawing.Point(289, 71);
+            this.imgProcesador.Location = new System.Drawing.Point(235, 146);
             this.imgProcesador.Name = "imgProcesador";
             this.imgProcesador.Size = new System.Drawing.Size(261, 309);
             this.imgProcesador.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -216,18 +220,42 @@ namespace Procesos_Hilos
             // ram
             // 
             this.ram.Image = global::Procesos_Hilos.Properties.Resources.RAM;
-            this.ram.Location = new System.Drawing.Point(596, 22);
+            this.ram.Location = new System.Drawing.Point(590, 63);
             this.ram.Name = "ram";
             this.ram.Size = new System.Drawing.Size(190, 416);
             this.ram.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ram.TabIndex = 36;
             this.ram.TabStop = false;
             // 
+            // i7
+            // 
+            this.i7.BackColor = System.Drawing.Color.DimGray;
+            this.i7.Image = global::Procesos_Hilos.Properties.Resources.proceso;
+            this.i7.Location = new System.Drawing.Point(139, 432);
+            this.i7.Name = "i7";
+            this.i7.Size = new System.Drawing.Size(90, 100);
+            this.i7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.i7.TabIndex = 37;
+            this.i7.TabStop = false;
+            // 
+            // i8
+            // 
+            this.i8.BackColor = System.Drawing.Color.Crimson;
+            this.i8.Image = global::Procesos_Hilos.Properties.Resources.proceso;
+            this.i8.Location = new System.Drawing.Point(139, 538);
+            this.i8.Name = "i8";
+            this.i8.Size = new System.Drawing.Size(90, 25);
+            this.i8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.i8.TabIndex = 38;
+            this.i8.TabStop = false;
+            // 
             // SEGMENTATION
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 566);
+            this.ClientSize = new System.Drawing.Size(846, 612);
+            this.Controls.Add(this.i8);
+            this.Controls.Add(this.i7);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.i6);
             this.Controls.Add(this.i5);
@@ -256,6 +284,8 @@ namespace Procesos_Hilos
             ((System.ComponentModel.ISupportInitialize)(this.i6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProcesador)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ram)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.i7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.i8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -278,5 +308,7 @@ namespace Procesos_Hilos
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox imgProcesador;
         private System.Windows.Forms.PictureBox ram;
+        private System.Windows.Forms.PictureBox i7;
+        private System.Windows.Forms.PictureBox i8;
     }
 }
