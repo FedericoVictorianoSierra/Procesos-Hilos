@@ -70,6 +70,12 @@
     <Compile Include="ROUNDROBIN.Designer.cs">
       <DependentUpon>ROUNDROBIN.cs</DependentUpon>
     </Compile>
+    <Compile Include="SEGMENTATION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEGMENTATION.Designer.cs">
+      <DependentUpon>SEGMENTATION.cs</DependentUpon>
+    </Compile>
     <Compile Include="SHORTEST JOB FIRST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ROUNDROBIN.resx">
       <DependentUpon>ROUNDROBIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEGMENTATION.resx">
+      <DependentUpon>SEGMENTATION.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SHORTEST JOB FIRST.resx">
       <DependentUpon>SHORTEST JOB FIRST.cs</DependentUpon>
