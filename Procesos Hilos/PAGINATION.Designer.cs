@@ -205,7 +205,7 @@ namespace Procesos_Hilos
             // 
             // imgProcesador
             // 
-            this.imgProcesador.Image = global::Procesos_Hilos.Properties.Resources.procesador;
+            this.imgProcesador.Image = global::Procesos_Hilos.Properties.Resources.DiscoDuro;
             this.imgProcesador.Location = new System.Drawing.Point(290, 63);
             this.imgProcesador.Name = "imgProcesador";
             this.imgProcesador.Size = new System.Drawing.Size(261, 309);
