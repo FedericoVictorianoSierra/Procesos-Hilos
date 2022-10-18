@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SimpleTCP, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleTCP.1.0.24\lib\net45\SimpleTCP.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSimpleTcp, Version=3.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSimpleTcp.3.0.0.2\lib\net461\SuperSimpleTcp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,8 +50,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Transitions, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\dot-net-transitions.1.2.1.0\lib\net40-full\Transitions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CHAT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CHAT.Designer.cs">
+      <DependentUpon>CHAT.cs</DependentUpon>
+    </Compile>
     <Compile Include="FIFO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +91,7 @@
     <Compile Include="SEGMENTATION.Designer.cs">
       <DependentUpon>SEGMENTATION.cs</DependentUpon>
     </Compile>
+    <Compile Include="Servidor.cs" />
     <Compile Include="SHORTEST JOB FIRST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +100,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CHAT.resx">
+      <DependentUpon>CHAT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FIFO.resx">
       <DependentUpon>FIFO.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +131,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
