@@ -17,6 +17,7 @@ namespace Procesos_Hilos
         private TcpClient client = new TcpClient();
         private IPEndPoint ipendpoint = new IPEndPoint(IPAddress.Any, 8000);
         private List<Connection> list = new List<Connection>();
+        
 
         Connection con;
 

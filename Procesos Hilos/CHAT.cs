@@ -32,9 +32,6 @@ namespace Procesos_Hilos
         private Thread miHilo;
         public CHAT()
         {
-
-            miHilo = new Thread(simulacionHilo);
-            miHilo.Start();
             InitializeComponent();
         }
 
@@ -45,19 +42,8 @@ namespace Procesos_Hilos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-
             nick = txtUsuario.Text;
             Conectar();
-
-            Transition t = new Transition(new TransitionType_EaseInEaseOut(900));
-            //t.add(lbTitulo1, "Left", 555);
-            t.add(txtUsuario, "Left", 555);
-            t.add(btnConectar, "Left", 555);
-            t.add(listBox1, "Left", 26);
-            t.add(txtMensaje, "Left", 26);
-            t.add(btnEnviar, "Left", 283);
-            t.run();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -87,7 +73,15 @@ namespace Procesos_Hilos
         {
             try
             {
-                client.Connect("127.0.0.1", 8000);
+                if(textBoxIp.Text == "")
+                {
+                    client.Connect("127.0.0.1", 8000);
+                }
+                else
+                {
+                    client.Connect(textBoxIp.Text, 8000);
+                }
+                
                 if (client.Connected)
                 {
                     Thread t = new Thread(Listen);
@@ -113,11 +107,10 @@ namespace Procesos_Hilos
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            btnEnviar.Location = new Point(-329, 250);
-            txtMensaje.Location = new Point(-329, 250);
-            listBox1.Location = new Point(-329, 23);
+            miHilo = new Thread(simulacionHilo);
+            miHilo.Start();
         }
     }
 }

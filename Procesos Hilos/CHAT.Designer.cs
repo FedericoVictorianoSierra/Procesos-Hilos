@@ -34,11 +34,13 @@ namespace Procesos_Hilos
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtMensaje = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxIp = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(141, 203);
+            this.btnConectar.Location = new System.Drawing.Point(37, 84);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
             this.btnConectar.TabIndex = 2;
@@ -48,7 +50,7 @@ namespace Procesos_Hilos
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(357, 405);
+            this.btnEnviar.Location = new System.Drawing.Point(370, 394);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(75, 23);
             this.btnEnviar.TabIndex = 7;
@@ -59,30 +61,49 @@ namespace Procesos_Hilos
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(28, 58);
+            this.listBox1.Location = new System.Drawing.Point(118, 58);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(451, 316);
+            this.listBox1.Size = new System.Drawing.Size(361, 316);
             this.listBox1.TabIndex = 8;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(141, 177);
+            this.txtUsuario.Location = new System.Drawing.Point(12, 58);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 9;
             // 
             // txtMensaje
             // 
-            this.txtMensaje.Location = new System.Drawing.Point(98, 407);
+            this.txtMensaje.Location = new System.Drawing.Point(118, 394);
             this.txtMensaje.Name = "txtMensaje";
             this.txtMensaje.Size = new System.Drawing.Size(234, 20);
             this.txtMensaje.TabIndex = 10;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(404, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Servidor";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // textBoxIp
+            // 
+            this.textBoxIp.Location = new System.Drawing.Point(85, 15);
+            this.textBoxIp.Name = "textBoxIp";
+            this.textBoxIp.Size = new System.Drawing.Size(303, 20);
+            this.textBoxIp.TabIndex = 12;
             // 
             // CHAT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 450);
+            this.Controls.Add(this.textBoxIp);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtMensaje);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.btnEnviar);
@@ -101,5 +122,7 @@ namespace Procesos_Hilos
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtMensaje;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxIp;
     }
 }
