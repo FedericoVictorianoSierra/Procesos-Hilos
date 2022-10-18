@@ -36,10 +36,8 @@ namespace Procesos_Hilos
             this.txtMensaje = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxIp = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.puerto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -102,16 +100,6 @@ namespace Procesos_Hilos
             this.textBoxIp.Size = new System.Drawing.Size(190, 20);
             this.textBoxIp.TabIndex = 12;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(370, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Stop Server";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -130,21 +118,13 @@ namespace Procesos_Hilos
             this.label2.TabIndex = 15;
             this.label2.Text = "Ip:";
             // 
-            // puerto
-            // 
-            this.puerto.Location = new System.Drawing.Point(186, 54);
-            this.puerto.Name = "puerto";
-            this.puerto.Size = new System.Drawing.Size(100, 20);
-            this.puerto.TabIndex = 16;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(139, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Puerto:";
             // 
             // CHAT
             // 
@@ -152,10 +132,8 @@ namespace Procesos_Hilos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 450);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.puerto);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBoxIp);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtMensaje);
@@ -179,10 +157,8 @@ namespace Procesos_Hilos
         private System.Windows.Forms.TextBox txtMensaje;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBoxIp;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox puerto;
         private System.Windows.Forms.Label label3;
     }
 }

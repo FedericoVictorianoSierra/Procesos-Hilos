@@ -82,7 +82,7 @@ namespace Procesos_Hilos
                 }
                 else
                 {
-                    client.Connect(textBoxIp.Text, int.Parse(puerto.Text));
+                    client.Connect(textBoxIp.Text, 8000);
                 }
                 
                 if (client.Connected)
@@ -132,11 +132,6 @@ namespace Procesos_Hilos
         private void CHAT_Load(object sender, EventArgs e)
         {
             textBoxIp.Text = GetLocalIPAddress().ToString();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            Chat.StopServer();
         }
     }
 }

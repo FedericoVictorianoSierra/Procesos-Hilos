@@ -35,7 +35,7 @@ namespace Procesos_Hilos
         }
         public void Inicio()
         {
-            Console.WriteLine("Servidor Activado!");
+            Console.WriteLine(IPAddress.Any + "Servidor Activado!:");
             server = new TcpListener(ipendpoint);
             server.Start();
 
@@ -56,11 +56,6 @@ namespace Procesos_Hilos
                 Thread t = new Thread(Escuchar_conexion);
                 t.Start();
             }
-        }
-
-        public void StopServer()
-        {
-            server.Stop();
         }
         void Escuchar_conexion()
         {
