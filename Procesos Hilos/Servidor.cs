@@ -15,7 +15,9 @@ namespace Procesos_Hilos
     {
         private TcpListener server;
         private TcpClient client = new TcpClient();
-        private IPEndPoint ipendpoint = new IPEndPoint(IPAddress.Any, 8000);
+        //private IPEndPoint ipendpoint = new IPEndPoint(IPAddress.Any, 8000);
+        Int32 port = 8000;
+        IPAddress localAddr = IPAddress.Parse("127.0.0.1");
         private List<Connection> list = new List<Connection>();
         
 
@@ -35,8 +37,9 @@ namespace Procesos_Hilos
         }
         public void Inicio()
         {
-            Console.WriteLine(IPAddress.Any + "Servidor Activado!:");
-            server = new TcpListener(ipendpoint);
+            Console.WriteLine(localAddr + "Servidor Activado!:");
+            //server = new TcpListener(ipendpoint);
+            server = new TcpListener(localAddr, port);
             server.Start();
 
             while (true)
@@ -56,6 +59,12 @@ namespace Procesos_Hilos
                 Thread t = new Thread(Escuchar_conexion);
                 t.Start();
             }
+        }
+
+        public void StopServer()
+        {
+            client.Close();
+            server.Stop();
         }
         void Escuchar_conexion()
         {

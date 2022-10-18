@@ -133,5 +133,10 @@ namespace Procesos_Hilos
         {
             textBoxIp.Text = GetLocalIPAddress().ToString();
         }
+
+        private void CHAT_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
     }
 }

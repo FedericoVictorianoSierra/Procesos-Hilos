@@ -143,6 +143,7 @@ namespace Procesos_Hilos
             this.Controls.Add(this.listBox1);
             this.Name = "CHAT";
             this.Text = "CHAT";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CHAT_FormClosed);
             this.Load += new System.EventHandler(this.CHAT_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
