@@ -125,6 +125,7 @@ namespace Procesos_Hilos
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            Servidor.IpServer = textBoxServer.Text;
             miHilo = new Thread(simulacionHilo);
             miHilo.Start();
         }
@@ -132,6 +133,7 @@ namespace Procesos_Hilos
         private void CHAT_Load(object sender, EventArgs e)
         {
             textBoxIp.Text = GetLocalIPAddress().ToString();
+            textBoxServer.Text = "127.0.0.1";
         }
 
         private void CHAT_FormClosed(object sender, FormClosedEventArgs e)

@@ -13,11 +13,12 @@ namespace Procesos_Hilos
 {
     class Servidor
     {
+        public static string IpServer;
         private TcpListener server;
         private TcpClient client = new TcpClient();
         //private IPEndPoint ipendpoint = new IPEndPoint(IPAddress.Any, 8000);
         Int32 port = 8000;
-        IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+        IPAddress localAddr = IPAddress.Parse(IpServer);//"127.0.0.1"
         private List<Connection> list = new List<Connection>();
         
 
