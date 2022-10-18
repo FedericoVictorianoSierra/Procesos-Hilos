@@ -36,11 +36,16 @@ namespace Procesos_Hilos
             this.txtMensaje = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxIp = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.puerto = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(37, 84);
+            this.btnConectar.Location = new System.Drawing.Point(211, 125);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
             this.btnConectar.TabIndex = 2;
@@ -61,14 +66,14 @@ namespace Procesos_Hilos
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(118, 58);
+            this.listBox1.Location = new System.Drawing.Point(28, 162);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(361, 316);
+            this.listBox1.Size = new System.Drawing.Size(451, 212);
             this.listBox1.TabIndex = 8;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(12, 58);
+            this.txtUsuario.Location = new System.Drawing.Point(96, 127);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 9;
@@ -82,26 +87,75 @@ namespace Procesos_Hilos
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(404, 12);
+            this.button1.Location = new System.Drawing.Point(370, 22);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(109, 23);
             this.button1.TabIndex = 11;
-            this.button1.Text = "Servidor";
+            this.button1.Text = "Start Server";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // textBoxIp
             // 
-            this.textBoxIp.Location = new System.Drawing.Point(85, 15);
+            this.textBoxIp.Location = new System.Drawing.Point(96, 87);
             this.textBoxIp.Name = "textBoxIp";
-            this.textBoxIp.Size = new System.Drawing.Size(303, 20);
+            this.textBoxIp.Size = new System.Drawing.Size(190, 20);
             this.textBoxIp.TabIndex = 12;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(370, 51);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(109, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Stop Server";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 130);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Nombre:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(71, 90);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Ip:";
+            // 
+            // puerto
+            // 
+            this.puerto.Location = new System.Drawing.Point(186, 54);
+            this.puerto.Name = "puerto";
+            this.puerto.Size = new System.Drawing.Size(100, 20);
+            this.puerto.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(139, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Puerto:";
             // 
             // CHAT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.puerto);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBoxIp);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtMensaje);
@@ -111,6 +165,7 @@ namespace Procesos_Hilos
             this.Controls.Add(this.listBox1);
             this.Name = "CHAT";
             this.Text = "CHAT";
+            this.Load += new System.EventHandler(this.CHAT_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,5 +179,10 @@ namespace Procesos_Hilos
         private System.Windows.Forms.TextBox txtMensaje;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBoxIp;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox puerto;
+        private System.Windows.Forms.Label label3;
     }
 }

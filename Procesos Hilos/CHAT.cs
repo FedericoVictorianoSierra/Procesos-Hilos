@@ -13,6 +13,8 @@ using System.Net.Sockets;
 using System.IO;
 using Transitions;
 
+using System.Net;
+
 namespace Procesos_Hilos
 {
     public partial class CHAT : Form
@@ -35,9 +37,10 @@ namespace Procesos_Hilos
             InitializeComponent();
         }
 
+        private Servidor Chat;
         void simulacionHilo()
         {
-            Servidor Chat = new Servidor();
+            Chat = new Servidor();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,7 +82,7 @@ namespace Procesos_Hilos
                 }
                 else
                 {
-                    client.Connect(textBoxIp.Text, 8000);
+                    client.Connect(textBoxIp.Text, int.Parse(puerto.Text));
                 }
                 
                 if (client.Connected)
@@ -107,10 +110,33 @@ namespace Procesos_Hilos
             }
         }
 
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             miHilo = new Thread(simulacionHilo);
             miHilo.Start();
+        }
+
+        private void CHAT_Load(object sender, EventArgs e)
+        {
+            textBoxIp.Text = GetLocalIPAddress().ToString();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Chat.StopServer();
         }
     }
 }

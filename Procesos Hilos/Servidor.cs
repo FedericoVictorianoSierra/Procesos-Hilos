@@ -53,11 +53,16 @@ namespace Procesos_Hilos
                 list.Add(con);
                 Console.WriteLine(con.nick + " se a Conectado.");
 
-                Thread t = new Thread(Escuchar_conexion);
-                t.Start();
+                /*Thread t = new Thread(Escuchar_conexion);
+                t.Start();*/
             }
         }
-        void Escuchar_conexion()
+
+        public void StopServer()
+        {
+            server.Stop();
+        }
+        /*void Escuchar_conexion()
         {
             Connection hcon = con;
 
@@ -86,6 +91,6 @@ namespace Procesos_Hilos
                     break;
                 }
             } while (true);
-        }
+        }*/
     }
 }
