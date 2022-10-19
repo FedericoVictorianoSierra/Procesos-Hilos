@@ -226,5 +226,10 @@ namespace Procesos_Hilos
                 MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
             }
         }
+
+        private void textBoxIp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

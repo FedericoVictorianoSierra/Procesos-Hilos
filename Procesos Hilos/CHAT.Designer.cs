@@ -50,9 +50,10 @@ namespace Procesos_Hilos
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(211, 125);
+            this.btnConectar.Location = new System.Drawing.Point(281, 154);
+            this.btnConectar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(75, 23);
+            this.btnConectar.Size = new System.Drawing.Size(100, 28);
             this.btnConectar.TabIndex = 2;
             this.btnConectar.Text = "Conectar";
             this.btnConectar.UseVisualStyleBackColor = true;
@@ -60,9 +61,10 @@ namespace Procesos_Hilos
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(288, 411);
+            this.btnEnviar.Location = new System.Drawing.Point(384, 506);
+            this.btnEnviar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(75, 23);
+            this.btnEnviar.Size = new System.Drawing.Size(100, 28);
             this.btnEnviar.TabIndex = 7;
             this.btnEnviar.Text = "Sent";
             this.btnEnviar.UseVisualStyleBackColor = true;
@@ -72,32 +74,36 @@ namespace Procesos_Hilos
             // 
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(28, 162);
+            this.listBox1.ItemHeight = 29;
+            this.listBox1.Location = new System.Drawing.Point(37, 199);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(345, 204);
+            this.listBox1.Size = new System.Drawing.Size(459, 236);
             this.listBox1.TabIndex = 8;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(96, 127);
+            this.txtUsuario.Location = new System.Drawing.Point(128, 156);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(100, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(132, 22);
             this.txtUsuario.TabIndex = 9;
             // 
             // txtMensaje
             // 
-            this.txtMensaje.Location = new System.Drawing.Point(48, 414);
+            this.txtMensaje.Location = new System.Drawing.Point(64, 510);
+            this.txtMensaje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMensaje.Name = "txtMensaje";
-            this.txtMensaje.Size = new System.Drawing.Size(234, 20);
+            this.txtMensaje.Size = new System.Drawing.Size(311, 22);
             this.txtMensaje.TabIndex = 10;
             this.txtMensaje.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMensaje_KeyDown);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(254, 21);
+            this.button1.Location = new System.Drawing.Point(339, 26);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 23);
+            this.button1.Size = new System.Drawing.Size(145, 28);
             this.button1.TabIndex = 11;
             this.button1.Text = "Start Server";
             this.button1.UseVisualStyleBackColor = true;
@@ -105,49 +111,56 @@ namespace Procesos_Hilos
             // 
             // textBoxIp
             // 
-            this.textBoxIp.Location = new System.Drawing.Point(55, 82);
+            this.textBoxIp.Location = new System.Drawing.Point(73, 101);
+            this.textBoxIp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxIp.Name = "textBoxIp";
-            this.textBoxIp.Size = new System.Drawing.Size(190, 20);
+            this.textBoxIp.Size = new System.Drawing.Size(252, 22);
             this.textBoxIp.TabIndex = 12;
+            this.textBoxIp.TextChanged += new System.EventHandler(this.textBoxIp_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 130);
+            this.label1.Location = new System.Drawing.Point(57, 160);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.Size = new System.Drawing.Size(59, 16);
             this.label1.TabIndex = 14;
             this.label1.Text = "Nombre:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 85);
+            this.label2.Location = new System.Drawing.Point(40, 105);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 13);
+            this.label2.Size = new System.Drawing.Size(21, 16);
             this.label2.TabIndex = 15;
             this.label2.Text = "Ip:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(98, 52);
+            this.label3.Location = new System.Drawing.Point(131, 64);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.Size = new System.Drawing.Size(0, 16);
             this.label3.TabIndex = 17;
             // 
             // textBoxServer
             // 
-            this.textBoxServer.Location = new System.Drawing.Point(28, 24);
+            this.textBoxServer.Location = new System.Drawing.Point(37, 30);
+            this.textBoxServer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxServer.Name = "textBoxServer";
-            this.textBoxServer.Size = new System.Drawing.Size(188, 20);
+            this.textBoxServer.Size = new System.Drawing.Size(249, 22);
             this.textBoxServer.TabIndex = 18;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(48, 385);
+            this.button2.Location = new System.Drawing.Point(64, 474);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 19;
             this.button2.Text = "Cargar";
             this.button2.UseVisualStyleBackColor = true;
@@ -159,26 +172,28 @@ namespace Procesos_Hilos
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(129, 358);
+            this.pictureBox1.Location = new System.Drawing.Point(172, 441);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(133, 62);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(273, 69);
+            this.pictureBox2.Location = new System.Drawing.Point(364, 85);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(133, 62);
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
             // 
             // CHAT
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(401, 460);
+            this.ClientSize = new System.Drawing.Size(535, 566);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
@@ -193,6 +208,7 @@ namespace Procesos_Hilos
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnConectar);
             this.Controls.Add(this.listBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CHAT";
             this.Text = "CHAT";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CHAT_FormClosed);
