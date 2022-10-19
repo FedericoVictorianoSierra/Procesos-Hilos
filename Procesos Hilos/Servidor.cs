@@ -13,7 +13,7 @@ namespace Procesos_Hilos
 {
     class Servidor
     {
-        public static string IpServer;
+        public static string IpServer;// Dirección IPv4. . . . . . . . . . . . . . : 192.168.0.104
         private TcpListener server;
         private TcpClient client = new TcpClient();
         //private IPEndPoint ipendpoint = new IPEndPoint(IPAddress.Any, 8000);
@@ -56,7 +56,6 @@ namespace Procesos_Hilos
 
                 list.Add(con);
                 Console.WriteLine(con.nick + " se a Conectado.");
-
                 Thread t = new Thread(Escuchar_conexion);
                 t.Start();
             }

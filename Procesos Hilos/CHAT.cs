@@ -51,7 +51,57 @@ namespace Procesos_Hilos
 
         private void button2_Click(object sender, EventArgs e)
         {
-            streamw.WriteLine(txtMensaje.Text);
+            Sent();
+        }
+
+        void Sent()
+        {
+            streamw.WriteLine(txtMensaje.Text);//escribe
+            streamw.Flush();
+            txtMensaje.Clear();
+        }
+
+        void Sent(Image image)
+        {
+            streamw.WriteLine(image);//escribe
+            streamw.Flush();
+            txtMensaje.Clear();
+        }
+
+        public static byte[] Convertir_Imagen_Bytes(Image img)
+        {
+            string sTemp = Path.GetTempFileName();
+            FileStream fs = new FileStream(sTemp, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            img.Save(fs, System.Drawing.Imaging.ImageFormat.Png);
+            fs.Position = 0;
+
+            int imgLength = Convert.ToInt32(fs.Length);
+            byte[] bytes = new byte[imgLength];
+            fs.Read(bytes, 0, imgLength);
+            fs.Close();
+            return bytes;
+        }
+
+        public static Image Convertir_Bytes_Imagen(byte[] bytes)
+        {
+            if (bytes == null) return null;
+
+            MemoryStream ms = new MemoryStream(bytes);
+            Bitmap bm = null;
+            try
+            {
+                bm = new Bitmap(ms);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            return bm;
+        }
+
+        void Information(string data)
+        {
+            streamw.WriteLine(data);
             streamw.Flush();
             txtMensaje.Clear();
         }
@@ -76,14 +126,7 @@ namespace Procesos_Hilos
         {
             try
             {
-                if(textBoxIp.Text == "")
-                {
-                    client.Connect("127.0.0.1", 8000);
-                }
-                else
-                {
-                    client.Connect(textBoxIp.Text, 8000);
-                }
+                client.Connect(textBoxIp.Text, 8000);
                 
                 if (client.Connected)
                 {
@@ -92,8 +135,8 @@ namespace Procesos_Hilos
                     stream = client.GetStream();
                     streamw = new StreamWriter(stream);
                     streamr = new StreamReader(stream);
-
                     streamw.WriteLine(nick);
+                    Information("Me he Conectado");
                     streamw.Flush();
 
                     t.Start();
@@ -106,7 +149,7 @@ namespace Procesos_Hilos
             catch (Exception ex)
             {
                 MessageBox.Show("Servidor no Disponible");
-                Application.Exit();
+                //Application.Exit();
             }
         }
 
@@ -123,6 +166,17 @@ namespace Procesos_Hilos
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
+        public static string getIPv4()
+        {
+           using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+           {
+                socket.Connect("10.0.1.20", 1337); // no importa a qué se conecte
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                return endPoint.Address.ToString(); //ipv4
+           }
+            throw new Exception("error getIPv4!");
+        }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             Servidor.IpServer = textBoxServer.Text;
@@ -132,13 +186,45 @@ namespace Procesos_Hilos
 
         private void CHAT_Load(object sender, EventArgs e)
         {
-            textBoxIp.Text = GetLocalIPAddress().ToString();
-            textBoxServer.Text = "127.0.0.1";
+            textBoxIp.Text = getIPv4().ToString();
+            textBoxServer.Text = getIPv4().ToString();
         }
 
         private void CHAT_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void txtMensaje_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //enter key is down
+                Sent();
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            cargarImagen();
+        }
+
+        void cargarImagen()
+        {
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string imagen = openFileDialog1.FileName;
+                    pictureBox1.Image = Image.FromFile(imagen);
+                    
+                    Sent(pictureBox1.Image);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El archivo seleccionado no es un tipo de imagen válido");
+            }
         }
     }
 }
