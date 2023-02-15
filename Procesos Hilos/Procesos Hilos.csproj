@@ -67,6 +67,12 @@
     <Compile Include="FIFO.Designer.cs">
       <DependentUpon>FIFO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Priority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Priority.Designer.cs">
+      <DependentUpon>Priority.cs</DependentUpon>
+    </Compile>
     <Compile Include="PAGINATION%28FIFO%29.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PAGINATION.resx">
       <DependentUpon>PAGINATION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Priority.resx">
+      <DependentUpon>Priority.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ROUNDROBIN.resx">
       <DependentUpon>ROUNDROBIN.cs</DependentUpon>

@@ -16,7 +16,7 @@ namespace Procesos_Hilos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CHAT());
+            Application.Run(new Priority());
         }
     }
 }
