@@ -49,7 +49,7 @@
             // 
             this.procesadorImg.Image = global::Procesos_Hilos.Properties.Resources.procesador;
             this.procesadorImg.Location = new System.Drawing.Point(264, 29);
-            this.procesadorImg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.procesadorImg.Margin = new System.Windows.Forms.Padding(2);
             this.procesadorImg.Name = "procesadorImg";
             this.procesadorImg.Size = new System.Drawing.Size(325, 320);
             this.procesadorImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -60,7 +60,7 @@
             // 
             this.img0.Image = global::Procesos_Hilos.Properties.Resources.proceso;
             this.img0.Location = new System.Drawing.Point(33, 54);
-            this.img0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.img0.Margin = new System.Windows.Forms.Padding(2);
             this.img0.Name = "img0";
             this.img0.Size = new System.Drawing.Size(68, 70);
             this.img0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -84,7 +84,7 @@
             // 
             this.img1.Image = global::Procesos_Hilos.Properties.Resources.proceso;
             this.img1.Location = new System.Drawing.Point(33, 129);
-            this.img1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.img1.Margin = new System.Windows.Forms.Padding(2);
             this.img1.Name = "img1";
             this.img1.Size = new System.Drawing.Size(68, 70);
             this.img1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -95,7 +95,7 @@
             // 
             this.img2.Image = global::Procesos_Hilos.Properties.Resources.proceso;
             this.img2.Location = new System.Drawing.Point(33, 204);
-            this.img2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.img2.Margin = new System.Windows.Forms.Padding(2);
             this.img2.Name = "img2";
             this.img2.Size = new System.Drawing.Size(68, 70);
             this.img2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -106,7 +106,7 @@
             // 
             this.img3.Image = global::Procesos_Hilos.Properties.Resources.proceso;
             this.img3.Location = new System.Drawing.Point(33, 279);
-            this.img3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.img3.Margin = new System.Windows.Forms.Padding(2);
             this.img3.Name = "img3";
             this.img3.Size = new System.Drawing.Size(68, 70);
             this.img3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -123,7 +123,6 @@
             this.label1.Size = new System.Drawing.Size(23, 18);
             this.label1.TabIndex = 6;
             this.label1.Text = "---";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -174,7 +173,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.img0);
             this.Controls.Add(this.procesadorImg);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Procesos_Hilos
@@ -18,32 +14,30 @@ namespace Procesos_Hilos
             InitializeComponent();
         }
 
-        private List<Thread> miHilo = new List<Thread>();
-        private List<int> tiempo = new List<int>();
-        private List<PictureBox> img = new List<PictureBox>();
+        private List<Thread> miHilo = new List<Thread>(); // Lista de hilos que se ejecutarán
+        private List<int> prioridad = new List<int>(); // Lista de prioridades de los hilos
+        private List<PictureBox> img = new List<PictureBox>(); // Lista de imágenes que representan a los hilos
 
-        private int numSelect;
+        private const int numSelect = 0;
         void NuevoHilo()
         {
-            Random rand = new Random();
             miHilo.Clear();
-            tiempo.Clear();
+            prioridad.Clear();
             img.Clear();
 
+            // Se crean cuatro hilos con diferentes prioridades (1-4)
             miHilo.Add(new Thread(simulacionHilo));
             miHilo.Add(new Thread(simulacionHilo));
             miHilo.Add(new Thread(simulacionHilo));
             miHilo.Add(new Thread(simulacionHilo));
 
-            tiempo.Add(rand.Next(1, 5));//0
-            label1.Text = tiempo.ElementAt(0).ToString();
-            tiempo.Add(rand.Next(1, 5));//1
-            label2.Text = tiempo.ElementAt(1).ToString();
-            tiempo.Add(rand.Next(1, 5));//2
-            label3.Text = tiempo.ElementAt(2).ToString();
-            tiempo.Add(rand.Next(1, 5));//3
-            label4.Text = tiempo.ElementAt(3).ToString();
+            // Se asignan las prioridades a cada hilo en orden descendente
+            prioridad.Add(1);
+            prioridad.Add(2);
+            prioridad.Add(3);
+            prioridad.Add(4);
 
+            // Se agregan las imágenes correspondientes a cada hilo en orden descendente
             img.Add(img0);
             img.Add(img1);
             img.Add(img2);
@@ -54,34 +48,21 @@ namespace Procesos_Hilos
                 img.ElementAt(i).Location = new Point(33, img.ElementAt(i).Location.Y);
             }
 
-            miHilo.ElementAt(CalcularMenor()).Start();
+            // Se inicia el hilo con la prioridad más alta (el primero en la lista)
+            miHilo.ElementAt(numSelect).Start();
         }
 
-        int CalcularMenor()
-        {
-            /*for (int i = 0; i < tiempo.Count; i++)
-            {
-                Console.WriteLine(tiempo.ElementAt(i));
-            }*/
-            for (int i = 0; i < tiempo.Count; i++)
-            {
-                if (tiempo.ElementAt(i) == tiempo.Min())
-                {
-                    //Console.WriteLine("Menor: " + i);
-                    return (numSelect = i);
-                }
-            }
-            return -1;
-        }
-
+        // Método donde se ejecuta cada hilo
         void simulacionHilo()
         {
             try
             {
                 while (true)
                 {
+                    // Se mueve la imagen correspondiente al hilo actual
                     img.ElementAt(numSelect).Location = new Point(img.ElementAt(numSelect).Location.X + 1, img.ElementAt(numSelect).Location.Y);
                     Thread.Sleep(1);
+                    // Si la imagen llega al final, se aborta el hilo
                     if (img.ElementAt(numSelect).Location.X >= procesadorImg.Location.X)
                     {
                         miHilo.ElementAt(numSelect).Abort();
@@ -90,50 +71,24 @@ namespace Procesos_Hilos
             }
             catch (ThreadAbortException abortException)
             {
-                //Console.WriteLine((string)abortException.ExceptionState);
+                Console.WriteLine((string)abortException.ExceptionState);
             }
             finally
             {
-                if (numSelect == miHilo.Count)
-                {
-                    numSelect = 0;
-                }
-
-                tiempo.RemoveAt(numSelect);
+                // Se elimina el hilo, su prioridad y su imagen de las listas correspondientes
+                prioridad.RemoveAt(numSelect);
                 miHilo.RemoveAt(numSelect);
                 img.RemoveAt(numSelect);
 
+                // Si aún quedan hilos en la lista, se inicia el siguiente hilo con la prioridad más alta
                 if (miHilo.Count > 0)
                 {
-                    numSelect = CalcularMayorPrioridad();
                     miHilo.ElementAt(numSelect).Start();
                 }
             }
         }
 
-        int CalcularMayorPrioridad()
-        {
-            if (tiempo.Count == 0)
-            {
-                return -1; // devolver un índice predeterminado cuando la lista está vacía
-            }
-
-            int mayorPrioridad = int.MinValue;
-            int indexMayorPrioridad = 0;
-
-            // Recorrer la lista de tiempos para encontrar el mayor
-            for (int i = 0; i < tiempo.Count; i++)
-            {
-                if (tiempo.ElementAt(i) > mayorPrioridad)
-                {
-                    mayorPrioridad = tiempo.ElementAt(i);
-                    indexMayorPrioridad = i;
-                }
-            }
-
-            return indexMayorPrioridad;
-        }
-
+        // Evento del botón "Iniciar"
         private void button1_Click(object sender, EventArgs e)
         {
             NuevoHilo();
@@ -142,46 +97,6 @@ namespace Procesos_Hilos
         private void Priority_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void img3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void img2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void img1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void img0_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

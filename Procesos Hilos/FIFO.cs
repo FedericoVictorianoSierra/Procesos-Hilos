@@ -18,14 +18,14 @@ namespace Procesos_Hilos
             NuevoHilo();
         }
 
-        private Queue<Thread> miHilo = new Queue<Thread>();
+        private Queue<Thread> miHilo = new Queue<Thread>();// cola de hilos de ejecución
         void NuevoHilo()
         {
-            miHilo.Enqueue(new Thread(simulacionHilo));//add
+            miHilo.Enqueue(new Thread(simulacionHilo));// se agrega un nuevo hilo de ejecución a la cola
             try
             {
-                miHilo.Peek().Start();//tomar el primero de la cola
-            } catch (ThreadStateException e)//Un thread que ha finalizado no se puede volver a utilizar
+                miHilo.Peek().Start(); // se inicia el primer hilo de la cola
+            } catch (ThreadStateException e)// si un hilo ha finalizado, no se puede volver a utilizar
             {
 
             }
@@ -34,7 +34,7 @@ namespace Procesos_Hilos
 
         void simulacionHilo()
         {
-            procesoImg.Location = new Point(109, 121);
+            procesoImg.Location = new Point(109, 121);// se ubica la imagen del proceso al inicio de la línea de procesamiento
             try
             {
                 while (true)
@@ -43,7 +43,7 @@ namespace Procesos_Hilos
                     Thread.Sleep(1);
                     if (procesoImg.Location.X >= procesadorImg.Location.X)
                     {
-                        miHilo.Dequeue().Abort();
+                        miHilo.Dequeue().Abort();// se elimina el hilo actual de la cola y se aborta su ejecución
                     }
                 }
             }
@@ -55,12 +55,11 @@ namespace Procesos_Hilos
             {
                 if (miHilo.Count > 0)
                 {
-                    miHilo.Peek().Start();
+                    miHilo.Peek().Start();// si quedan hilos en la cola, se inicia el primero
                     Console.WriteLine(miHilo.Count + " procesos en espera");
                 }
             }
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;

@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Procesos_Hilos
@@ -37,8 +32,9 @@ namespace Procesos_Hilos
             miHilo.Add(new Thread(simulacionHilo));
             miHilo.Add(new Thread(simulacionHilo));
 
+            // Se generan tiempos de ejecución aleatorios para cada hilo
             tiempo.Add(rand.Next(1, 9));//0
-            label1.Text = tiempo.ElementAt(0).ToString();
+            label1.Text = tiempo.ElementAt(0).ToString();// Muestra el tiempo de ejecución en la etiqueta correspondiente
             tiempo.Add(rand.Next(1, 9));//1
             label2.Text = tiempo.ElementAt(1).ToString();
             tiempo.Add(rand.Next(1, 9));//2
@@ -54,36 +50,36 @@ namespace Procesos_Hilos
             for (int i = 0; i < img.Count; i++)
             {
                 img.ElementAt(i).Location = new Point(33, img.ElementAt(i).Location.Y);
-            }       
+            }
 
+            // Se inicia el hilo con el tiempo de ejecución más corto
             miHilo.ElementAt(CalcularMenor()).Start();
         }
 
+        // Función que calcula el índice del hilo con el tiempo de ejecución más corto
         int CalcularMenor()
         {
-            /*for (int i = 0; i < tiempo.Count; i++)
-            {
-                Console.WriteLine(tiempo.ElementAt(i));
-            }*/
             for (int i = 0; i < tiempo.Count; i++)
             {
                 if (tiempo.ElementAt(i) == tiempo.Min())
                 {
-                    //Console.WriteLine("Menor: " + i);
                     return (numSelect = i);
                 }
             }
             return -1;
         }
 
-         void simulacionHilo()
+        // Función que simula la ejecución del hilo
+        void simulacionHilo()
          {
              try
              {
                 while (true)
                 {
+                    // Se mueve la imagen del hilo seleccionado
                     img.ElementAt(numSelect).Location = new Point(img.ElementAt(numSelect).Location.X + 1, img.ElementAt(numSelect).Location.Y);
                     Thread.Sleep(1);
+                    // Si la imagen llega al final, se aborta el hilo correspondiente
                     if (img.ElementAt(numSelect).Location.X >= procesadorImg.Location.X)
                     {
                         miHilo.ElementAt(numSelect).Abort();
@@ -92,15 +88,17 @@ namespace Procesos_Hilos
              }
              catch (ThreadAbortException abortException)
              {
-                 //Console.WriteLine((string)abortException.ExceptionState);
+                 Console.WriteLine((string)abortException.ExceptionState);
              }
              finally
              {
+                // Se eliminan los datos correspondientes al hilo que acaba de finalizar
                 tiempo.RemoveAt(numSelect);
                 miHilo.RemoveAt(numSelect);
                 img.RemoveAt(numSelect);
                 if (miHilo.Count >= 1)
                 {
+                    // Si quedan procesos por ejecutar, se inicia el hilo del proceso con el menor tiempo de ejecución
                     miHilo.ElementAt(CalcularMenor()).Start();
                 }
              }
@@ -114,11 +112,6 @@ namespace Procesos_Hilos
         private void Form2_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
